@@ -13,6 +13,7 @@ class Game extends Component {
   }
 
   playGame = () => {
+    
     this.setState({
       playerOne: this.signs[Math.floor(Math.random() * 3)],
       playerTwo: this.signs[Math.floor(Math.random() * 3)]
@@ -27,21 +28,31 @@ class Game extends Component {
      } else if ((p1 === 'rock' && p2 === 'scissors') ||
                 (p1 === 'scissors' && p2 === 'paper')||
                 (p1 === 'paper' && p2 === 'rock')) {
-        return 'Player 1 Wins!!'            
+        return 'Player Wins!!'            
       } else {
-        return 'Player 2 Wins!!'
+        return 'Computer Wins!!'
       }
   }
 
   render() {
     return (
       <div className="style">
+        <h1>Rock-Paper-Scissors</h1>
+        <div className='names'>
+          <h2 id='player-name'>Player</h2>
+          <h2 id='computer-name'>Computer</h2>
+        </div>
         <div className='players'>
           <PlayerCard sign={this.state.playerOne}/>
           <PlayerCard sign={this.state.playerTwo}/>
         </div>
-        <div className='winner'>{this.decideWinner()}</div>
-        <button type='button' onClick={this.playGame}>Play The Game</button>
+        <div className='winner'><h3>{this.decideWinner()}</h3></div>
+        <h3>Pick Your Weapon!</h3>
+        <div className='buttons'>
+          <button type='button' onClick={this.playGame} value='0'>Rock</button>
+          <button type='button' onClick={this.playGame} value='1'>Paper</button>
+          <button type='button' onClick={this.playGame} value='2'>Scissors</button>
+        </div>  
       </div>
     )
   }
