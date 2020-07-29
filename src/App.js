@@ -12,10 +12,13 @@ class Game extends Component {
     }
   }
 
-  playGame = () => {
-    
+  // passing in evt here will give you access to evt.target
+  // which returns the acual "html" object, then givin us
+  // access to all the attributes of our button
+  playGame = (evt) => {
+    const val = evt.target.value
     this.setState({
-      playerOne: this.signs[Math.floor(Math.random() * 3)],
+      playerOne: val,
       playerTwo: this.signs[Math.floor(Math.random() * 3)]
     })
   }
@@ -49,9 +52,9 @@ class Game extends Component {
         <div className='winner'><h3>{this.decideWinner()}</h3></div>
         <h3>Pick Your Weapon!</h3>
         <div className='buttons'>
-          <button type='button' onClick={this.playGame} value='0'>Rock</button>
-          <button type='button' onClick={this.playGame} value='1'>Paper</button>
-          <button type='button' onClick={this.playGame} value='2'>Scissors</button>
+          <button type='button' onClick={this.playGame} value='rock'>Rock</button>
+          <button type='button' onClick={this.playGame} value='paper'>Paper</button>
+          <button type='button' onClick={this.playGame} value='scissors'>Scissors</button>
         </div>  
       </div>
     )
